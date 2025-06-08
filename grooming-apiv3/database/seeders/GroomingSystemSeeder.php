@@ -10,7 +10,6 @@ class GroomingSystemSeeder extends Seeder
 {
     public function run()
     {
-        // Create customers
         $customers = [
             ['id' => Str::uuid(), 'full_name' => 'María González', 'phone_number' => '7234-5678', 'email' => 'maria.gonzalez@email.com'],
             ['id' => Str::uuid(), 'full_name' => 'Carlos Rodríguez', 'phone_number' => '7845-9123', 'email' => 'carlos.rodriguez@email.com'],
@@ -26,7 +25,7 @@ class GroomingSystemSeeder extends Seeder
             ]));
         }
 
-        // Create users
+
         $users = [
             ['id' => Str::uuid(), 'full_name' => 'Laura Beatriz Vásquez', 'role' => 'receptionist', 'email' => 'laura.vasquez@grooming.com', 'password_hash' => bcrypt('password123')],
             ['id' => Str::uuid(), 'full_name' => 'Pedro Antonio Morales', 'role' => 'groomer', 'email' => 'pedro.morales@grooming.com', 'password_hash' => bcrypt('password123')],
@@ -40,7 +39,6 @@ class GroomingSystemSeeder extends Seeder
             ]));
         }
 
-        // Create grooming services
         $services = [
             ['name' => 'Baño Completo', 'description' => 'Baño con shampoo especial, secado y cepillado', 'duration_min' => 45],
             ['name' => 'Corte de Pelo', 'description' => 'Corte y arreglo de pelo según la raza', 'duration_min' => 60],
@@ -53,7 +51,6 @@ class GroomingSystemSeeder extends Seeder
             DB::table('grooming_services')->insert($service);
         }
 
-        // Create pets (using the customer IDs we created)
         $customer1 = DB::table('customers')->where('email', 'maria.gonzalez@email.com')->first();
         $customer2 = DB::table('customers')->where('email', 'carlos.rodriguez@email.com')->first();
         

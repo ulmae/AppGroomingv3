@@ -9,7 +9,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('work_order_services', function (Blueprint $table) {
-            $table->id(); // Auto-incrementing primary key
+            $table->id(); 
             $table->uuid('work_order_id');
             $table->unsignedBigInteger('service_id');
             $table->integer('order_index')->nullable();

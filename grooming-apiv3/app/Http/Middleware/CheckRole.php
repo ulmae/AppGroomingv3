@@ -16,6 +16,7 @@ class CheckRole
      * @param  string  $role
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
+    //No tocar
     public function handle(Request $request, Closure $next, string $role)
     {
         if (!Auth::check()) {

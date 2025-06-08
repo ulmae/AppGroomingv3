@@ -9,7 +9,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('breed_cut_styles', function (Blueprint $table) {
-            $table->id(); // Auto-incrementing primary key
+            $table->id();
             $table->string('breed', 100);
             $table->string('name', 100)->nullable();
             $table->text('description')->nullable();

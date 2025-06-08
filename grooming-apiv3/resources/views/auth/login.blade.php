@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Tu Veterinaria</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('android-chrome-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{{ asset('android-chrome-512x512.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script>
@@ -27,16 +33,16 @@
                 class="object-cover w-full h-full"
                 style="object-position: center; z-index: 0;"
             />
-            <div class="absolute inset-0 bg-blue-900 bg-opacity-10"></div>
+            <div class="absolute inset-0 bg-blue-900 bg-opacity-20"></div>
         </div>
         
         <div class="flex w-full md:w-1/2 items-center justify-center bg-white">
-            <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-md w-full">
-                <h2 class="text-center mb-6 font-bold font-montserrat" style="color: #2A588A; font-size: 40px;">
-                    BIENVENIDO A <br />
-                    <span style="color: #2A588A;" class="font-montserrat">
-                        TU VETERINARIA
-                    </span>
+            <div class="bg-blue-100 bg-opacity-90 p-8 rounded-lg shadow-lg max-w-md w-full">
+                <div class="flex justify-center mb-6">
+                    <img src="/logo.png" alt="Logo Veterinaria" class="h-16 w-auto">
+                </div>
+                <h2 class="text-center mb-6 font-bold font-montserrat" style="color: #2A588A; font-size: 32px;">
+                    BIENVENIDO
                 </h2>
                 
                 <form method="POST" action="{{ route('login') }}" class="flex flex-col space-y-4">

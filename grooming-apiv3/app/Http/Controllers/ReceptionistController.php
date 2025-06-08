@@ -65,7 +65,7 @@ class ReceptionistController extends Controller
         }
 
         return redirect()->route('receptionist.dashboard')
-                        ->with('success', 'Orden creada exitosamente');
+                        ->with('success', 'Orden creada!');
     }
 
     public function cancelOrder(Request $request, $id)
@@ -73,7 +73,7 @@ class ReceptionistController extends Controller
         $workOrder = WorkOrder::findOrFail($id);
         
         if (in_array($workOrder->status, ['completed', 'cancelled'])) {
-            return response()->json(['error' => 'No se puede cancelar esta orden'], 400);
+            return response()->json(['error' => 'No se puede cancelar esta orden!'], 400);
         }
 
         $workOrder->update(['status' => 'cancelled']);

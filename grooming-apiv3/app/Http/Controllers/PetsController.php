@@ -110,6 +110,6 @@ class PetsController extends Controller
         ]);
 
         return redirect()->route('pets.index', ['customer_id' => $pet->customer_id])
-                        ->with('success', 'Mascota actualizada exitosamente');
+                        ->with('success', 'Mascota actualizada!');
     }
 }
