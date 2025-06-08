@@ -9,58 +9,50 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    /**
-     * Mostrar el formulario de login
-     */
-    public function showLoginForm()
-    {
+
+    public function showLoginForm(){
         return view('auth.login');
     }
 
-    /**
-     * Procesar el login
-     */
     public function login(Request $request)
     {
-        // Validar los datos del formulario
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        // Intentar autenticar al usuario
         $credentials = $request->only('email', 'password');
         
-        // Buscar usuario por email y verificar contraseña
         $user = User::where('email', $credentials['email'])
                    ->where('active', true)
                    ->first();
 
         if ($user && Hash::check($credentials['password'], $user->password_hash)) {
-            // Autenticar al usuario
             Auth::login($user);
             
-            // Redirigir al dashboard
-            return redirect()->route('dashboard');
+            return $this->redirectBasedOnRole($user->role);
         }
 
-        // Si falla la autenticación, regresar con error
         return redirect()->back()
                          ->withInput($request->only('email'))
                          ->withErrors(['email' => 'El usuario o la contraseña son incorrectos']);
     }
-
-    /**
-     * Mostrar el dashboard
-     */
-    public function dashboard()
+    protected function redirectBasedOnRole($role)
     {
-        return view('dashboard');
+        return match($role) {
+            'receptionist' => redirect()->route('receptionist.dashboard'),
+            'groomer' => redirect()->route('groomer.dashboard'),
+            'admin' => redirect()->route('admin.dashboard'),
+            default => redirect()->route('dashboard')
+        };
     }
 
-    /**
-     * Cerrar sesión
-     */
+    public function dashboard()
+    {
+        $user = Auth::user();
+        return $this->redirectBasedOnRole($user->role);
+    }
+
     public function logout()
     {
         Auth::logout();

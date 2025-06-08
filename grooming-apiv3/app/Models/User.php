@@ -11,13 +11,9 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    // Indicamos que usamos UUID en lugar de incrementos
     public $incrementing = false;
     protected $keyType = 'string';
 
-    /**
-     * The attributes that are mass assignable.
-     */
     protected $fillable = [
         'id',
         'full_name',
@@ -27,17 +23,11 @@ class User extends Authenticatable
         'active',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     */
     protected $hidden = [
         'password_hash',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     */
     protected function casts(): array
     {
         return [
@@ -47,17 +37,11 @@ class User extends Authenticatable
         ];
     }
 
-    /**
-     * Override the password attribute accessor
-     */
     public function getAuthPassword()
     {
         return $this->password_hash;
     }
 
-    /**
-     * Boot method to generate UUID when creating
-     */
     protected static function boot()
     {
         parent::boot();

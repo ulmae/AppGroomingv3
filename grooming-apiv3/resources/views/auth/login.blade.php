@@ -20,7 +20,6 @@
 </head>
 <body>
     <div class="flex min-h-screen h-screen w-full">
-        <!-- Imagen lado izquierdo -->
         <div class="relative w-1/2 h-full hidden md:block">
             <img
                 src="/perro.jpeg"
@@ -31,7 +30,6 @@
             <div class="absolute inset-0 bg-blue-900 bg-opacity-10"></div>
         </div>
         
-        <!-- Login lado derecho -->
         <div class="flex w-full md:w-1/2 items-center justify-center bg-white">
             <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-md w-full">
                 <h2 class="text-center mb-6 font-bold font-montserrat" style="color: #2A588A; font-size: 40px;">
@@ -44,7 +42,6 @@
                 <form method="POST" action="{{ route('login') }}" class="flex flex-col space-y-4">
                     @csrf
                     
-                    <!-- Mostrar mensaje de error -->
                     @if ($errors->has('email'))
                         <div class="text-red-500 text-sm mb-2 text-center">
                             {{ $errors->first('email') }}
@@ -94,7 +91,6 @@
                     </button>
                 </form>
                 
-                <!-- Usuarios de prueba (solo para desarrollo) -->
                 <div class="mt-4 text-xs text-gray-500 text-center">
                     <details>
                         <summary class="cursor-pointer">Usuarios de prueba</summary>
